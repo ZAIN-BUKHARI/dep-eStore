@@ -3,7 +3,8 @@ import Section from '../components/Section'
 import { FaTshirt } from 'react-icons/fa'
 import { FaShuttleVan } from 'react-icons/fa'
 import { TbCurrencyReal } from 'react-icons/tb'
-
+import styled from 'styled-components'
+import NewProducts from '../components/Arrival'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       </Head>
       
       <Section/>
+      <NewProducts/>
       <section className="text-gray-600 body-font">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-col text-center w-full mb-20">

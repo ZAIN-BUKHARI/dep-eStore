@@ -4,4 +4,35 @@
 
 body{
     overflow-x: hidden;
+    background-color: #eee;
+}
+
+.videocss{
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+}
+/* .main{
+    height: 500px;
+    width: 100vw;
+} */
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 653px; */
+    background-color: rgb(0,0,0,.3);
+}
+.content{
+    font-size: 30px;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
