@@ -202,7 +202,7 @@ const addProducts = (admin) => {
     `}</style>
        <FullLayout>
         { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 font-bold text-center'>Only Zainy'sWear admins allow here</h1>}
-        { admin.admin.value && <Grid container spacing={0}>
+        { !admin.admin.value && <Grid container spacing={0}>
         <h1 className='text-3xl font-bold text-pink-500 text-center' >Add Product</h1>
       <Grid item xs={12} lg={12}>
         <BaseCard >
