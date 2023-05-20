@@ -40,7 +40,7 @@ const products = (admin) => {
       {products.map((items)=>{
      return <div key={items._id} className="lg:w-1/4 md:w-1/2 p-4 w-full text-center border-b-2 border-pink-500 ">
         <span className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260"/>
+          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={items.image?items.image:'https://dummyimage.com/420x260'}/>
         </span>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{items.category}</h3>

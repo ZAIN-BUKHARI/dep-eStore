@@ -11,7 +11,6 @@ import theme from "../src/theme/theme";
 
 
 export default function Index(admin) {
- 
   return (
     
     <ThemeProvider theme={theme}>
@@ -27,14 +26,15 @@ export default function Index(admin) {
         <SalesOverview />
       </Grid>
       {/* ------------------------- row 1 ------------------------- */}
+      <h1 className="text-3xl font-bold text-pink-500 text-center ml-[500px]" >Admins</h1>
+      <Grid item xs={12} lg={12}>
+        <BlogCard />
+      </Grid>
       <Grid item xs={12} lg={4}>
         <DailyActivity />
       </Grid>
       <Grid item xs={12} lg={8}>
-        <ProductPerfomance />
-      </Grid>
-      <Grid item xs={12} lg={12}>
-        <BlogCard />
+        <ProductPerfomance admin={admin} />
       </Grid>
     </Grid>
     </FullLayout>}

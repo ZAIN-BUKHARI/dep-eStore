@@ -4,7 +4,7 @@ import Product from '../../models/Product'
 const handler= async (req, res)=> {
     if(req.method=='DELETE'){
         try{
-
+            console.log(req.body.delslug)
             await Product.findOneAndDelete({slug:req.body.delslug})
            res.status(200).send({success:true})
         }

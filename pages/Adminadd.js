@@ -27,6 +27,7 @@ const addProducts = (admin) => {
   const [size, setsize] = useState('')
   const [AvailableQty, setAvailableQty] = useState('')
   const [category, setcategory] = useState('')
+  const [Profit, setprofit] = useState('')
   const handleChange = async  (e) =>{
       if(e.target.name=='slug'){
         setslug(e.target.value)
@@ -52,30 +53,35 @@ const addProducts = (admin) => {
       else if(e.target.name=='color'){
         setcolor(e.target.value)
       }
+      else if(e.target.name=='Profit'){
+        setprofit(e.target.value)
+      }
       else if(e.target.name=='file'){
-        // const img = new FormData()
-        //   img.append('file',e.target.files[0])
-        //  let b= await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/IMG`,img)
-        //    setFile(`/uploads/`+ b.data.success.filename)
         const img = new FormData()
           img.append('file',e.target.files[0])
-         let b= await axios.post(`http://localhost:3000/img`,img)
-           setFile(b.data.success.filename)
+         let b= await axios.post(`${process.env.NEXT_PUBLIC_HOST}/api/IMG`,img)
+           setFile(`/uploads/`+ b.data.success.filename)
            
         
       }
+     
       else if(e.target.name=='price'){
         setprice(e.target.value)
       }
      
+  }
+  const imgLink=(e)=>{
+    if(e.target.name=='file'){
+      setFile(e.target.value)
+    }
   }
   const submitform = async (e) =>{
     e.preventDefault()
    
   
        
-        if( slug!='' && title!='' && desc!='' && price!='' && size!=''&& color!='' && AvailableQty!='' && category!=''){
-        const data = {slug,title,file,desc,price,size,color,AvailableQty,category}
+        if( slug!='' && title!='' && desc!='' && price!='' && size!=''&& color!='' && AvailableQty!='' && category!=''&& Profit!=''){
+        const data = {slug,title,file,desc,price,size,color,AvailableQty,category,Profit}
         console.log(data)
         
     let response =  await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/AddProducts`,{
@@ -98,19 +104,9 @@ const addProducts = (admin) => {
         progress: undefined,
         theme: "light",
         });
-        // setslug('')
-        // settitle('')
-        // setAvailableQty('')
-        // setcategory('')
-        // setcolor('')
-        // setdesc('')
-        // setprice('')
-        // setsize('')
-        // setFile('')
         
        
-    }
-    else if(a.error){
+    }else if(a.error){
       toast.info('You put some wrong info! Try again ', {
         position: "bottom-center",
         autoClose: 2000,
@@ -121,8 +117,7 @@ const addProducts = (admin) => {
         progress: undefined,
         theme: "light",
         });
-
-    }
+}
   }
   else{
     toast.error('Cannot set empty field', {
@@ -141,9 +136,8 @@ const addProducts = (admin) => {
   }
   const DELETE = async (e) =>{
         e.preventDefault()
-        if(slug!=''){
+        if(delslug!=''){
         const data = {delslug}
-        
     let response =  await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/Delproduct`,{
       method:'DELETE',
       headers:{
@@ -218,11 +212,14 @@ const addProducts = (admin) => {
             <TextField onChange={handleChange} value={title} name="title" label="Title" variant="outlined" />
             <TextField onChange={handleChange} value={color} name="color" label="Color" variant="outlined" />
             <TextField onChange={handleChange} value={size} name="size" label="Size" variant="outlined" />
-            <TextField onChange={handleChange} value={price} name="price" label="Price" variant="outlined" />
-            <TextField onChange={handleChange} value={AvailableQty} name="AvailableQty" label="Quantity" variant="outlined" />
+            <TextField onChange={handleChange} value={price} type='number' name="price" label="Price" variant="outlined" />
+            <TextField onChange={handleChange} value={AvailableQty} type='number' name="AvailableQty" label="Quantity" variant="outlined" />
             <TextField onChange={handleChange} value={category} name="category" label="Category" variant="outlined" />
             <TextField onChange={handleChange} value={desc} name="desc" label="Description" variant="outlined" multiline rows={4} /> 
+            <TextField onChange={handleChange} value={Profit} name="Profit" type='number' label="Profit" variant="outlined"  />
             <TextField onChange={handleChange}  name="file" type='file' label="" variant="outlined"  />
+            <h1 className='text-center text-2xl font-bold text-pink-500' >Or</h1>
+            <TextField onChange={imgLink}  name="file" type='text' label="Image Link" variant="outlined"  />
             
             
             

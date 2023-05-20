@@ -7,11 +7,49 @@ import { useState } from 'react';
 import mongoose from 'mongoose'
 import Order from '../models/Order'
 import Link from 'next/link';
+import axios from 'axios';
 
 
 const orders = (admin) => {
   const orders=admin.order
+  const [Marked,setMarked]=useState(false)
+  // const [Pay,setPay]=useState(false)
 
+  
+//STATUS
+  const status=async(_id)=>{
+    console.log(_id)
+    const data = {_id,Marked}
+    const dataone = {_id}
+    if(!Marked){
+      await axios.post('/api/Admin/status',dataone).then(res=>{
+        console.log(res)
+        // if(res.data.orders.status=='done'){
+          setMarked(true)
+        // }
+      })
+    }else{
+      await axios.post('/api/Admin/status',data).then(res=>{
+        console.log(res)
+          setMarked(false)
+          })
+    }
+  }
+  //PAY
+  // const pay=async(_id)=>{
+  //   console.log(_id)
+  //   const data = {_id,Pay}
+  //   const dataone = {_id}
+  //   if(!Pay){
+  //     await axios.post('/api/Admin/pay',dataone).then(res=>{
+  //         setPay(true)
+  //     })
+  //   }else{
+  //     await axios.post('/api/Admin/pay',data).then(res=>{
+  //         setPay(false)
+  //         })
+  //   }
+  // }
     return (
       <ThemeProvider theme={theme}>
            <style jsx global>{`
@@ -60,10 +98,16 @@ const orders = (admin) => {
               <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Address
               </th>
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Mark
+              </th>
+              {/* <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Payment 
+              </th> */}
             </tr>
           </thead>
           <tbody>
-          {Object.keys(orders).map((items)=>{
+          {Object.keys(orders).reverse().map((items)=>{
                return <tr key={orders[items]._id} className="border-b border-pink-300">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{orders[items].OrderId}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{orders[items].name}</td>
@@ -86,6 +130,12 @@ const orders = (admin) => {
               <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
                   {orders[items].address}
               </td>
+              <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
+                  <button onClick={()=>{status(orders[items]._id)}} className={`text-black bg-white border-2 p-2 rounded-full ${orders[items].status=='done'?'bg-green-500 ':'border-red-300'}`} >Mark</button>
+              </td>
+              {/* <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
+              <button onClick={()=>{pay(orders[items]._id)}} className={`text-black bg-white border-2 p-2 rounded-full ${orders[items].payment=='done'?'bg-green-500 ':'border-red-300'}`} >Mark</button>
+              </td> */}
             </tr  >
             })}
            
@@ -125,3 +175,4 @@ export async function getServerSideProps(context) {
 
 
 export default orders
+

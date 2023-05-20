@@ -18,12 +18,17 @@ const Menuitems = [
     title: "Orders",
     icon: "box",
     href: "/Adminorders",
-  }
-  // {
-  //   title: "Ratings",
-  //   icon: "star",
-  //   href: "/rating",
-  // },
+  },
+  {
+    title: "Sales",
+    icon: "user",
+    href: "/Adminsales",
+  },
+  {
+    title: "Search",
+    icon: "star",
+    href: "/Admincustom",
+  },
   // {
   //   title: "Images",
   //   icon: "image",
@@ -31,11 +36,11 @@ const Menuitems = [
   // },
   // {
   //   title: "Pagination",
-  //   icon: "user",
+  //   icon: "star",
   //   href: "/pagination",
   // },
   // {
-  //   title: "Tables",
+  //   title: "Customization",
   //   icon: "grid",
   //   href: "/table",
   // },

@@ -51,6 +51,7 @@ const products = [
 ];
 
 const ProductPerfomance = () => {
+  // console.log(admin)
   return (
     <BaseCard title="Product Perfomance">
       <Table

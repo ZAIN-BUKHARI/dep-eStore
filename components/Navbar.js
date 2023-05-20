@@ -119,7 +119,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
     }
   };
   return (
-    <div  className=" py-2 shadow-pink-500 md:h-11 h-[100px] bg-pink-500 shadow-md sticky z-10 top-0 flex md:justify-start  md:text-xl md:flex-row flex-col items-center justify-between">
+    <div  className=" py-2 shadow-gray-600 md:h-11 h-[100px] bg-white shadow-md sticky z-10 top-0 flex md:justify-start  md:text-xl md:flex-row flex-col items-center justify-between">
       <div className="logo mx-5">
       <ToastContainer
         position="top-right"
@@ -133,14 +133,14 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
         pauseOnHover={false}
         theme="light"
       />
-        { user.value && <Link href={"/"}> <Image alt="Zainy'sWear" width={30} height={30} className='text-white rounded-full ' src="/l4.jpeg"/></Link>}
+        { user.value && <Link  href={"/"}> <Image alt="Zainy'sWear" width={30} height={30} className='text-white rounded-full ' src="/l4.jpeg"/></Link>}
         { !user.value && <Link href={"/"}> <Image alt="Zainy'sWear" width={30} height={30} className='text-white rounded-full ' src="/l4.jpeg"/></Link>}
         
       </div>
       <div className="nav ">
-        <ul className=" space-x-3 md:space-x-10  font-bold flex cursor-pointer   items-center md:text-md ">
+        <ul className=" space-x-2 md:space-x-10  font-bold flex cursor-pointer   items-center md:text-md ">
           
-            <Link href={'/Tshirts'}><li className="flex hover:text-white  " 
+            <Link href={'/Tshirts'}><li className="flex hover:text-gray-600  " 
             // onClick={onMouseli1O}
             >
             Men 
@@ -172,7 +172,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
             
           
           
-            <li className="flex cursor-pointer  hover:text-white" 
+            <li className="flex cursor-pointer  hover:text-gray-600" 
             // onClick={onMouseli2O}
             >Women<FaArrowDown className="my-2 mx-2 font-bold text-[15px] hover:text-white " />
             {/* <span className="cart absolute left-[90px] md:left-[155px] top-2 items-center rounded-md mx-5 flex my-8 md:my-1  ">
@@ -202,7 +202,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
             </li>
         
           
-            <li className="flex cursor-pointer  hover:text-white" 
+            <li className="flex cursor-pointer  hover:text-gray-600" 
             // onClick={onMouseli3O}
             >Kids<FaArrowDown className="my-2 mx-2 font-bold text-[15px] hover:text-white " />
             {/* <span onMouseLeave={onMouseli3L} onClick={onMouseli3L}  className="cart absolute left-[90px] md:left-[280px] top-2 items-center rounded-md mx-5 flex my-8 md:my-1   ">
@@ -218,7 +218,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
             </li>
           
           
-            <li className="flex hover:text-white" 
+            <li className="flex hover:text-gray-600" 
             // onClick={onMouseli4O}
             >Electronics<FaArrowDown className="my-2 mx-2 font-bold text-[15px] hover:text-white " />
             {/* <span className="cart absolute left-[90px] md:left-[430px] top-2 items-center rounded-md mx-5 flex my-8 md:my-1 ">
@@ -248,6 +248,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
             <hr className="py-2"/>
           </ul>
         </div>}
+
         {user.value  && <MdAccountCircle onClick={onMouseOver}  className="text-xl    md:text-3xl  cursor-pointer mx-4"></MdAccountCircle>}
         {!user.value &&<Link href={'/login'}> <button className=" px-2 py-1 rounded-md text-xl   md:text-2xl  mx-2  text-black"><AiOutlineLogin/></button></Link>}
         <AiOutlineShoppingCart
@@ -262,7 +263,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
         <h2 className="font-bold text-xl">Shopping Cart</h2>
         <span
           onClick={toggleCart}
-          className="absolute top-5 right-2 text-pink-500 cursor-pointer text-2xl"
+          className="absolute top-5 right-2 text-black cursor-pointer text-2xl"
         >
           <AiFillCloseCircle />
         </span>

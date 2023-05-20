@@ -3,24 +3,23 @@ import Product from '../../models/Product'
 
 const handler= async (req, res)=> {
     if(req.method=='POST'){
-       
         
-        
-       try{ let p = new Product({
+       try{ 
+        let p = new Product({
             title:req.body.title,
             slug:req.body.slug,
             desc:req.body.desc,
             image:req.body.file,
-            category:req.body.category,
             size:req.body.size,
             color:req.body.color,
             price:req.body.price,
-            AvailableQty:req.body.AvailableQty
+            category:req.body.category,
+            AvailableQty:req.body.AvailableQty,
+            Profit:req.body.Profit
             
         })
          let a = await p.save()
-    
-    res.status(200).json({ success:a })
+        res.status(200).json({ success:a })
        }
        catch(error){
         res.status(200).json({ error:error })

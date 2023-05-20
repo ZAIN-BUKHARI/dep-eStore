@@ -63,7 +63,6 @@ const ProfileDD = () => {
               fontWeight="400"
               sx={{ ml: 1 }}
             >
-              Hi,
             </Typography>
             <Typography
               variant="h5"
@@ -72,7 +71,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Zain
+              Log out
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>

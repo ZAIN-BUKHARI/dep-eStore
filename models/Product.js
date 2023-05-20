@@ -16,7 +16,6 @@ const ProductSchema = new Schema({
     },
     image:{
         type:String,
-        required:true
 
     },
     size:{
@@ -36,6 +35,10 @@ const ProductSchema = new Schema({
         required:true
     },
     AvailableQty:{
+        type:Number,
+        required:true
+    },
+    Profit:{
         type:Number,
         required:true
     }

@@ -40,8 +40,11 @@ const OrderSchema = new Schema({
     },
     status:{
         type:String,
-        // required:true,
         default:'pending'
+    },
+    payment:{
+        type:String,
+        default:''
     },
 
 },{timestamps:true})

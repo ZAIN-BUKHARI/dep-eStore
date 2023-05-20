@@ -83,7 +83,7 @@ const NewProducts = () => {
         </DIVTWO>
     </Box>
     <ProductInfoBox>
-      <TitleTWO href={'/'}>{products.title.slice(0,15)}</TitleTWO>
+      <TitleTWO href={'/'}>{products.title.slice(0,10)}</TitleTWO>
       <PriceRow>
         <Price>${products.price}</Price>
         <Button  block primary outline >Buy</Button>
