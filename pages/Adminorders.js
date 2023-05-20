@@ -13,7 +13,7 @@ import axios from 'axios';
 const orders = (admin) => {
   const orders=admin.order
   const [Marked,setMarked]=useState(false)
-  // const [Pay,setPay]=useState(false)
+  const [Pay,setPay]=useState(false)
 
   
 //STATUS
@@ -36,20 +36,19 @@ const orders = (admin) => {
     }
   }
   //PAY
-  // const pay=async(_id)=>{
-  //   console.log(_id)
-  //   const data = {_id,Pay}
-  //   const dataone = {_id}
-  //   if(!Pay){
-  //     await axios.post('/api/Admin/pay',dataone).then(res=>{
-  //         setPay(true)
-  //     })
-  //   }else{
-  //     await axios.post('/api/Admin/pay',data).then(res=>{
-  //         setPay(false)
-  //         })
-  //   }
-  // }
+  const pay=async(_id)=>{
+    const data = {_id,Pay}
+    const dataone = {_id}
+    if(!Pay){
+      await axios.post('/api/Admin/pay',dataone).then(res=>{
+          setPay(true)
+      })
+    }else{
+      await axios.post('/api/Admin/pay',data).then(res=>{
+          setPay(false)
+          })
+    }
+  }
     return (
       <ThemeProvider theme={theme}>
            <style jsx global>{`
@@ -59,7 +58,7 @@ const orders = (admin) => {
     `}</style>
     
     { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 text-center'>Only Zainy'sWear admins allow here</h1>}
-      { !admin.admin.value &&  <FullLayout>
+      { admin.admin.value &&  <FullLayout>
        
      <div>
         <div className='container mx-auto  '>
@@ -101,9 +100,9 @@ const orders = (admin) => {
               <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Mark
               </th>
-              {/* <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Payment 
-              </th> */}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -133,9 +132,9 @@ const orders = (admin) => {
               <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
                   <button onClick={()=>{status(orders[items]._id)}} className={`text-black bg-white border-2 p-2 rounded-full ${orders[items].status=='done'?'bg-green-500 ':'border-red-300'}`} >Mark</button>
               </td>
-              {/* <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
+              <td className="text-sm font-medium text-gray-900 px-6 py-4 whitespace-nowrap">
               <button onClick={()=>{pay(orders[items]._id)}} className={`text-black bg-white border-2 p-2 rounded-full ${orders[items].payment=='done'?'bg-green-500 ':'border-red-300'}`} >Mark</button>
-              </td> */}
+              </td>
             </tr  >
             })}
            

@@ -16,9 +16,8 @@ const ColumnsWrapper = styled.div`
     grid-template-columns: 1.2fr .8fr;
     // margin-right:60px
   }
-  // gap: 10px;
+  gap: 10px;
   margin-top: 10px;
-  border:2px solid gray
   
   
  
@@ -28,16 +27,10 @@ const Box = styled.div`
   background-color: #fff;
   border-radius: 10px;
   padding: 30px;
-  // margin-right:-20px;
+  margin-right:-20px;
 
 `;
-const BoxTWo = styled.div`
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 30px;
-  // margin-right:-20px;
 
-`;
 
 const ProductInfoCell = styled.td`
   padding: 10px 0;
@@ -69,14 +62,16 @@ const QuantityLabel = styled.span`
 
 
 const Adminsales = (admin) => {
-  console.log(admin)
   const [product,setproduct]=useState([])
+  const [totprofit,settotprofit]=useState([])
   useEffect(()=>{
       function Order(){
-        axios.get('/api/getorder').then(res=>{
-          setproduct(res.data.orders)
+        axios.get('/api/Admin/sales').then(res=>{
+          setproduct(res.data.allOrder)
+          settotprofit(res.data.allproduct)
         })
       }
+    
       Order()
      
   },[])
@@ -88,6 +83,7 @@ const Adminsales = (admin) => {
     const price = productId.subTotal;
     total += price;
   }
+
 // length of marked orders 
  let marked = 0;
   for (const productId of product) {
@@ -99,6 +95,13 @@ const Adminsales = (admin) => {
   for (const productId of product) {
     if(productId.status=='done')
     markedproduct+=productId.subTotal
+  }
+  //price of marked orders
+  let profit=0;
+  for (const productId of totprofit) {
+    if(productId.Profit){
+      profit+=productId.Profit
+    }
   }
   //length of payment orders
   let lengthofallproduct = 0;
@@ -122,8 +125,8 @@ const Adminsales = (admin) => {
         }
     `}</style>
     { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 text-center'>Only Zainy'sWear admins allow here</h1>}
-        { !admin.admin.value && <FullLayout>
-      <h1 className='text-4xl text-pink-500 font-bold' >Orders</h1>
+        { admin.admin.value && <FullLayout>
+      <h1 className='text-4xl text-pink-500 font-bold' >Orders sale</h1>
     <Center>
       <ColumnsWrapper className='font-bold'>
         <Box className='' >
@@ -166,29 +169,9 @@ const Adminsales = (admin) => {
                     </QuantityLabel>
                     {/* <Button >+</Button> */}
                 </ProductInfoCell>
-                <ProductInfoCell>Rs1200</ProductInfoCell>  
+                <ProductInfoCell>Rs{profit}</ProductInfoCell>  
                   </tr>
-
-                   <tr>
-                    <td></td>
-                    <td></td>
-                    {/* <td>total</td> */}
-                    </tr>    
-              
-                </tbody>
-                
-           </Table>
-           
-          
-        </Box>
-        <BoxTWo className='w-[370px] '  >
-        <Table >
-           <thead>
-                </thead>
-                <tbody>
-                 
-               
-                <tr>
+                  <tr>
                 <ProductInfoCell >
                   <ProductImageBox><img src='https://media.istockphoto.com/id/1324465031/photo/high-angle-view-close-up-asian-woman-using-meal-delivery-service-ordering-food-online-with.jpg?b=1&s=170667a&w=0&k=20&c=PdIhDg9OT_qTFuSaavfhPDRyABCJL7X0MDBlyqasYQ0='/></ProductImageBox>
                   Number of orders Marked</ProductInfoCell>
@@ -219,7 +202,9 @@ const Adminsales = (admin) => {
                 </tbody>
                 
            </Table>
-           </BoxTWo>
+           
+          
+        </Box>
       </ColumnsWrapper>
     </Center>
     </FullLayout>}

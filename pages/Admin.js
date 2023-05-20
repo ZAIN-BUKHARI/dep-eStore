@@ -20,7 +20,7 @@ export default function Index(admin) {
         }
     `}</style>
     { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 text-center'>Only Zainy'sWear admins allow here</h1>}
-    { !admin.admin.value &&  <FullLayout>
+    { admin.admin.value &&  <FullLayout>
     <Grid container spacing={0}>
       <Grid item xs={12} lg={12}>
         <SalesOverview />
@@ -33,9 +33,9 @@ export default function Index(admin) {
       <Grid item xs={12} lg={4}>
         <DailyActivity />
       </Grid>
-      <Grid item xs={12} lg={8}>
+      {/* <Grid item xs={12} lg={8}>
         <ProductPerfomance admin={admin} />
-      </Grid>
+      </Grid> */}
     </Grid>
     </FullLayout>}
     
