@@ -171,6 +171,7 @@ const Checkout = ({cart,clearCart,  AddToCart,removeFromCart,subTotal}) => {
         <div className=" mb-4">
           <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
           <textarea type="text" value={address}  onChange={Change} cols='10' rows='5' id="address" name="address" className='w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' ></textarea>
+          <h1>Go to account section to fill address form</h1>
         </div>
       </div>
       </form>

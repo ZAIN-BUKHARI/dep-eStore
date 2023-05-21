@@ -41,6 +41,10 @@ const ProductSchema = new Schema({
     Profit:{
         type:Number,
         required:true
+    },
+    Feature:{
+        type:String,
+        default:''
     }
     
 

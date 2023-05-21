@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import styled from 'styled-components'
 import Center from './Center';
 import Link from 'next/link'
 import Button from './Button'
-
+import axios from 'axios';
 
 const StyleDiv = styled.div`
 display:grid;
@@ -69,6 +69,12 @@ const DIVTWO=styled.div`
 `
 
 const NewProducts = () => {
+  const [feature,setfeature]=useState()
+  useEffect(()=>{
+     axios.get('/api/feature').then(res=>{
+      setfeature(res.data.product)
+     })
+  },[])
   return (
     <Center>
         <Title>New Arrivals</Title>

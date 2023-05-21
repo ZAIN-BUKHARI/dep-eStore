@@ -7,10 +7,10 @@ import Link from 'next/link'
 const AllOrders = () => {
   const router=useRouter()
   const [order,setOrder]=useState([])
-  const [date,setDate]=useState('')
+  // const [date,setDate]=useState('')
   useEffect(() => {
         const Orderemail = async ()=>{
-          let user = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/findUserEmail`,{
+          let user = await fetch(`/api/allorder`,{
             method:'POST',
             headers:{
               'Content-Type':'application/json'
@@ -19,12 +19,10 @@ const AllOrders = () => {
           })
           let response = await user.json()
           setOrder(response.order)
-          const date=new Date(response.order)
-         
-          
+          // const date=new Date(response.order)
+          // console.log(response)
         }
      
-
     if(!localStorage.getItem('token')){
      router.push('/')
     }
@@ -34,11 +32,14 @@ const AllOrders = () => {
   
     
   }, [])
+  const cli=()=>{
+    console.log(order)
+  }
   
 
   return (
     <div>
-        <div className='container mx-auto  '>
+        <div className='container mx-auto mb-56  '>
             <div className="flex flex-col">
   <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -54,6 +55,9 @@ const AllOrders = () => {
                 Name
               </th>
               <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Email
+              </th>
+              <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Amount
               </th>
               <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -65,9 +69,12 @@ const AllOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {order.map((items)=>{
+            {order.length>=0 && order.map(items=>{
                return <tr key={items._id} className="border-b border-pink-300">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{items.OrderId}</td>
+              <td className="text-sm font-medium text-gray-900  px-6 py-4 whitespace-nowrap">
+                {items.name}
+              </td>
               <td className="text-sm font-medium text-gray-900  px-6 py-4 whitespace-nowrap">
                 {items.email}
               </td>

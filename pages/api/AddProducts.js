@@ -15,7 +15,8 @@ const handler= async (req, res)=> {
             price:req.body.price,
             category:req.body.category,
             AvailableQty:req.body.AvailableQty,
-            Profit:req.body.Profit
+            Profit:req.body.Profit,
+            Feature:req.body.Feature
             
         })
          let a = await p.save()

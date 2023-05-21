@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -103,7 +103,7 @@ const login = () => {
     <>
    
     
-    <div className='mb-24 border-b-2 border-pink-500 '><section className="h-full gradient-form bg-gray-200 md:h-[800px]">
+    {/* <div className='mb-24 border-b-2 border-pink-500 '><section className="h-full gradient-form bg-gray-200 md:h-[800px]"> */}
      <style jsx gobally>
      {`
       navbar{
@@ -112,17 +112,35 @@ const login = () => {
       Footer{
         display:none;
       }
-      #box{
-        // background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-     }
-     #boxs{
-        // background: linear-gradient(   to right, #ee7724, #d8363a, #dd3675, #b44593 );
-     }
+     
      `}
    </style>
+<div className='topper'>
+    <div className='box'>
+      <span className='borderLine'></span>
+      <form  >
+        <h2>Admins Login</h2>
+        <div className='inputBox'>
+          <input onChange={clickHandler} value={email} name='email' type='email' required='required' />
+          <span>Email</span>
+          <i></i>
+        </div>
+        <div className='inputBox'>
+          <input onChange={clickHandler} value={password} name='password'  type='password' required='required' />
+          <span>Password</span>
+          <i></i>
+        </div>
+        <div className='Link' >
+              {/* <Link href={'/forgot'}>Forgot password</Link> */}
+              {/* <Link href={'/signup'}>Signup</Link> */}
+        </div>
+        <input onClick={submitHandler} className='but' type='button' value='login' />
+      </form>
+    </div>
+    </div>
       
       
-    <div className="container py-12 px-6 ">
+    {/* <div className="container py-12 px-6 ">
       <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
         <div className="xl:w-10/12">
           <div className="block bg-white shadow-lg rounded-lg">
@@ -189,9 +207,7 @@ const login = () => {
               </div>
               <div
                 className="lg:w-6/12 flex items-center lg:rounded-r-lg  rounded-b-lg lg:rounded-bl-none bg-pink-500 " id='box'
-                // style="
-                //   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-                // "
+               
               >
                 <div className="text-white px-4 py-6 md:p-12 md:mx-6 shadow-2xl border-pink-500 ">
                   <h4 className="text-xl font-semibold mb-6">www.Zainy'sWear.com</h4>
@@ -208,7 +224,7 @@ const login = () => {
         </div>
       </div>
     </div>
-  </section></div>
+  </section></div> */}
   </>
  
   )

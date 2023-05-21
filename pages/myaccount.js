@@ -61,7 +61,7 @@ useEffect(()  => {
       body:JSON.stringify({token:localStorage.getItem('token')})
     })
     let response = await user.json()
-    setMatching(response.order[0].email)
+    setMatching(response.order.email)
   }
   changing()
     
@@ -192,7 +192,7 @@ useEffect(()  => {
   return (
     <>
     <div className='container mx-auto my-9 ' >
-      <h1 className='text-3xl text-center font-bold text-pink-500 ' >Update your account</h1>
+      <h1 className='text-3xl text-center font-bold text-pink-500 ' >Update your details</h1>
     </div>
     <div className='mx-auto flex my-2'>
       <div className='px-2 w-1/2'>
@@ -225,16 +225,17 @@ useEffect(()  => {
         <div className=" mb-4">
           <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
           <textarea type="text" value={address}  onChange={Change} cols='10' rows='5' id="address" name="address" className='w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out' ></textarea>
+        
         </div>
       </div>
-      <button onClick={submitForm}  className=" disabled:bg-pink-300 flex mx-4 w-20 text-white bg-pink-500 border-0 py-2 px-4 focus:outline-none hover:bg-pink-600 rounded text-sm">Submit</button>
+      <button onClick={submitForm}  className=" disabled:bg-pink-300 mb-5 flex mx-4 w-20 text-white bg-pink-500 border-0 py-2 px-4 focus:outline-none hover:bg-pink-600 rounded text-sm">Submit</button>
     
        
         
 
 
 
-      <h2 className='text-3xl text-center font-bold text-pink-500 ' > Change password</h2>
+      {/* <h2 className='text-3xl text-center font-bold text-pink-500 ' > Change password</h2>
       <div className='mx-auto flex my-2'>
       <div className='px-2 w-1/2'>
         <div className=" mb-4">
@@ -259,7 +260,7 @@ useEffect(()  => {
       
       
       
-      <button onClick={Passwordupdater }    className=" disabled:bg-pink-300 flex mx-4 w-20 text-white bg-pink-500 border-0 py-2 px-4 focus:outline-none hover:bg-pink-600 rounded text-sm">Submit</button>
+      <button onClick={Passwordupdater }    className=" disabled:bg-pink-300 flex mx-4 w-20 text-white bg-pink-500 border-0 py-2 px-4 focus:outline-none hover:bg-pink-600 rounded text-sm">Submit</button> */}
     </>
   )
 }

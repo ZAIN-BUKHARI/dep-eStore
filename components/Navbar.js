@@ -237,7 +237,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
       </div>
 
       <div className="cart absolute right-0 top-2 items-center mx-5 flex my-1 ">
-        { drop.value == true && <div  onMouseLeave={onMouseLeave} className="absolute right-8 bg-pink-300   top-10 rounded-md px-5 w-36 ">
+        { drop.value == true && <div  onMouseLeave={onMouseLeave} className="absolute right-8 bg-white   top-10 rounded-md px-5 w-36 ">
           <ul>
             
            <Link href={'/AllOrders'}> <li className="py-2 hover:text-white hover:p-2 text-black cursor-pointer font-bold text-sm">Orders</li></Link>

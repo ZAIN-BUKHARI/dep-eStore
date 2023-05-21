@@ -28,6 +28,7 @@ const addProducts = (admin) => {
   const [AvailableQty, setAvailableQty] = useState('')
   const [category, setcategory] = useState('')
   const [Profit, setprofit] = useState('')
+  const [Feature, setFeature] = useState('')
   const handleChange = async  (e) =>{
       if(e.target.name=='slug'){
         setslug(e.target.value)
@@ -67,6 +68,9 @@ const addProducts = (admin) => {
      
       else if(e.target.name=='price'){
         setprice(e.target.value)
+      }
+      else if(e.target.name=='Feature'){
+        setFeature(e.target.value)
       }
      
   }
@@ -217,6 +221,7 @@ const addProducts = (admin) => {
             <TextField onChange={handleChange} value={category} name="category" label="Category" variant="outlined" />
             <TextField onChange={handleChange} value={desc} name="desc" label="Description" variant="outlined" multiline rows={4} /> 
             <TextField onChange={handleChange} value={Profit} name="Profit" type='number' label="Profit" variant="outlined"  />
+            <TextField onChange={handleChange} value={Feature} name="Feature" type='text' label="Feature product" variant="outlined"  />
             <TextField onChange={handleChange}  name="file" type='file' label="" variant="outlined"  />
             <h1 className='text-center text-2xl font-bold text-pink-500' >Or</h1>
             <TextField onChange={imgLink}  name="file" type='text' label="Image Link" variant="outlined"  />

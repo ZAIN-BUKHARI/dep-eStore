@@ -7,7 +7,7 @@ import React from 'react'
 const Section = () => {
   return (
     <div className='main body-font shadow-lg shadow-gray-600 '>
-      <div className='overlay h-[653px]' > </div>
+      <div className='overlay  md:h-[721px]' > </div>
       <video className='videocss' src='shoe.mp4 ' autoPlay muted loop />
       <div className='content'>
         <h1 className='text-5xl' >Welcome</h1>
