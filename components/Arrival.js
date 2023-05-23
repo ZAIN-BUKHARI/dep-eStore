@@ -10,6 +10,9 @@ display:grid;
 grid-template-columns:1fr 1fr 1fr ;
 gap:20px;
 padding-top:20px;
+@media (max-width: 768px) {
+  grid-template-columns:1fr 1fr;
+}
 `;
 const Title = styled.h2`
   font-size: 2rem;
@@ -32,11 +35,12 @@ border-radius: 10px;
 `;
 
 const TitleTWO = styled.div`
-  font-weight: normal;
+  font-weight: bold;
   font-size:.9rem;
   color:inherit;
   text-decoration:none;
   margin:0;
+  // font:bold;
 `;
 const ProductInfoBox = styled.div`
   margin-top: 5px;
@@ -68,7 +72,7 @@ const DIVONE=styled.div`
 const DIVTWO=styled.div`
 `
 
-const NewProducts = () => {
+const NewProducts = ({AddToCart}) => {
   const [feature,setfeature]=useState()
   useEffect(()=>{
      axios.get('/api/feature').then(res=>{
@@ -79,7 +83,7 @@ const NewProducts = () => {
   return (
     <Center>
         <Title>New Arrivals</Title>
-    <StyleDiv>
+    <StyleDiv className='font-bold'>
         {feature && feature.map(products=>(
             // <ProductBox {...products} />
             <Link key={products.id} href={`/product/${products.id}`}>
@@ -90,10 +94,18 @@ const NewProducts = () => {
         </DIVTWO>
     </Box>
     <ProductInfoBox>
-      <TitleTWO href={'/'}>{products.title}</TitleTWO>
+      <TitleTWO  className='font-bold' href={'/'}>{products.title.slice(0,16)}</TitleTWO>
       <PriceRow>
         <Price>${products.price}</Price>
-        <Button  block primary outline >Buy</Button>
+        <Button  block primary outline onClick={()=>{AddToCart(
+          products.name,
+          products.variant,
+          products.size,
+          products.price,
+          1,
+
+
+        )}} >Add to cart</Button>
         </PriceRow>    
     </ProductInfoBox>
     </DIVONE>

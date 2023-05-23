@@ -4,8 +4,9 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div><footer className="text-gray-600 md:ml-1 -ml-6 hover:text-pink-500 body-font footer Footer border-t-2 border-pink-500     ">
-    <div className="container px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+    <div>
+      {/* <footer className="text-gray-600 md:ml-1 -ml-6 hover:text-pink-500 body-font footer Footer border-t-2 border-pink-500     "> */}
+    <div className="container bg-back px-5 py-12 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
       <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
         <Link href={'/'}  className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
       
@@ -94,7 +95,8 @@ const Footer = () => {
         </span>
       </div>
     </div>
-  </footer></div>
+  {/* </footer> */}
+  </div>
   )
 }
 
