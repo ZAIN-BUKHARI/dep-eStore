@@ -91,7 +91,7 @@ display:none;
 `}</style>
 
 { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 text-center'>Only Zainy'sWear admins allow here</h1>}
-{ !admin.admin.value &&  <FullLayout>
+{ admin.admin.value &&  <FullLayout>
     
     {/* <h1 className='text-3xl text-pink-500 font-bold my-5 text-center'>SEARCH PRODUCT BY SLUG</h1> */}
       <Grid item xs={12} lg={12}>

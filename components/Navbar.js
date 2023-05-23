@@ -138,7 +138,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
         
       </div>
       <div className="nav ">
-        <ul className=" space-x-2 md:space-x-10  font-bold flex cursor-pointer   items-center md:text-md ">
+        <ul className=" space-x-1 md:space-x-10  font-bold flex cursor-pointer   items-center md:text-md ">
           
             <Link href={'/Tshirts'}><li className="flex hover:text-gray-600  " 
             // onClick={onMouseli1O}
@@ -273,12 +273,18 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
           )}
           {Object.keys(cart).map((K) => {
             return (
+              <>
               <li key={K}>
                 <div className="flex my-5">
                   
-                  <div className="w-2/3 font-semibold">{cart[K].name}({cart[K].size}/{Capital(cart[K].variant)})</div>
+                  
+                 {cart[K].size && cart[K].variant && <div className="w-2/3 font-normal">{cart[K].name}({cart[K].size}/{Capital(cart[K].variant)})</div>}
+                 {!cart[K].size && !cart[K].variant && <div className="w-2/3 font-normal">{cart[K].name}</div>}
+                 {cart[K].size && !cart[K].variant && <div className="w-2/3 font-normal">{cart[K].name}({cart[K].size})</div>}
+                 {!cart[K].size && cart[K].variant && <div className="w-2/3 font-normal">{cart[K].name}({Capital(cart[K].variant)})</div>}
                   
                   <div className="flex items-center font-semibold justify-center w-1/3  text-sm ">
+                    
                     <AiOutlinePlusCircle
                       onClick={() => {
                         AddToCart(
@@ -292,6 +298,7 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
                       }}
                       className="text-pink-500 cursor-pointer"
                     />
+                    
                     <span className="mx-2">{cart[K].qty} </span>
                     <AiOutlineMinusCircle
                       onClick={() => {
@@ -307,12 +314,15 @@ const Navbar = ({logout, user ,clearCart, cart, AddToCart, removeFromCart, subTo
                       className="text-pink-500 cursor-pointer"
                     />
                   </div>
+                  
                 </div>
               </li>
+              <div className='bg-white h-[1px] flex flex-col w-50'></div>
+              </>
             );
           })}
         </ol>
-        <span className="subtotal ">Subtotal : {subTotal}</span>
+        <span className="subtotal  ">Subtotal : {subTotal}</span>
         <div className="flex mb-4 mt-4">
           {user.value && <Link href={"/checkout"}>
             <button disabled={Object.keys(cart).length===0} className="flex mx-2 text-white disabled:bg-pink-300 bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm">

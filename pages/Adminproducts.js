@@ -32,7 +32,7 @@ const products = (admin) => {
     `}</style>
         
         { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 text-center'>Only Zainy'sWear admins allow here</h1>}
-        { !admin.admin.value && <FullLayout>
+        { admin.admin.value && <FullLayout>
           <h1 className='text-3xl font-bold text-pink-500 text-center' >view all products</h1>
           <section className="text-gray-600 body-font">
   <div className="container px-5 py-12 mx-auto">

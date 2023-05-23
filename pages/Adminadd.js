@@ -16,7 +16,7 @@ import {
 import BaseCard from "../src/components/baseCard/BaseCard";
 import { File } from 'react-feather';
 const addProducts = (admin) => {
- 
+ console.log(admin)
   const [slug, setslug] = useState('')
   const [delslug, setdelslug] = useState('')
   const [title, settitle] = useState('')
@@ -84,8 +84,8 @@ const addProducts = (admin) => {
    
   
        
-        if( slug!='' && title!='' && desc!='' && price!='' && size!=''&& color!='' && AvailableQty!='' && category!=''&& Profit!=''){
-        const data = {slug,title,file,desc,price,size,color,AvailableQty,category,Profit}
+        if( slug!='' && title!='' && desc!='' && price!=''  && AvailableQty!='' && category!=''&& Profit!=''){
+        const data = {slug,title,file,desc,price,size,color,AvailableQty,category,Profit,Feature}
         console.log(data)
         
     let response =  await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/AddProducts`,{
@@ -206,7 +206,7 @@ const addProducts = (admin) => {
     `}</style>
        <FullLayout>
         { !admin.admin.value && <h1 className='text-3xl text-pink-500 my-5 font-bold text-center'>Only Zainy'sWear admins allow here</h1>}
-        { !admin.admin.value && <Grid container spacing={0}>
+        { admin.admin.value && <Grid container spacing={0}>
         <h1 className='text-3xl font-bold text-pink-500 text-center' >Add Product</h1>
       <Grid item xs={12} lg={12}>
         <BaseCard >

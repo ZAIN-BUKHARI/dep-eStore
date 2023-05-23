@@ -111,7 +111,7 @@ display:none;
               <Link href={'/forgot'}>Forgot password</Link>
               <Link href={'/signup'}>Signup</Link>
         </div>
-        <input onClick={submitHandler} className='but' type='button' value='login' />
+        <input onClick={submitHandler} className='butt' type='button' value='login' />
       </form>
     </div>
     </div>

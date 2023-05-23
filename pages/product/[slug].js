@@ -69,11 +69,14 @@ const select =(COLOR,SIZE)=>{
   <div className="container px-5 py-12 mx-auto z-20 ">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
       {/* img tag height property  lg:h-auto  */}
-      <Image alt="ecommerce" height={100} width={400} className="h-[500px] lg:w-1/2   w-[450px]  object-cover object-center rounded" src={product.image}/>
+      <img alt="ecommerce" height={100} width={400} className="h-[500px] lg:w-1/2   w-[450px]  object-cover object-center rounded" src={product.image}/>
       {/* <Image alt="ecommerce" className="lg:w-1/2 w-full h-[500px] object-cover object-center rounded" src={product.image}/> */}
       <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 className="text-sm title-font text-gray-500 tracking-widest">Zainy'sWear</h2>
-        <h1 className={`text-gray-900  text-3xl title-font font-medium mb-1`}>{product.title}({product.size}/{Capital(product.color)})</h1>
+       {product.size && product.color && <h1 className={`text-gray-900  text-3xl title-font font-medium mb-1`}>{product.title}({product.size}/{Capital(product.color)})</h1>}
+       {product.size && product.color=='' &&  <h1 className={`text-gray-900  text-3xl title-font font-medium mb-1`}>{product.title}({product.size})</h1>}
+       {product.color && product.size=='' &&  <h1 className={`text-gray-900  text-3xl title-font font-medium mb-1`}>{product.title}({product.color})</h1>}
+       {product.size=='' && product.color=='' &&  <h1 className={`text-gray-900  text-3xl title-font font-medium mb-1`}>{product.title}</h1>}
         <div className="flex mb-4">
           <span className="flex items-center">
             <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-pink-500" viewBox="0 0 24 24">
@@ -113,23 +116,26 @@ const select =(COLOR,SIZE)=>{
         </div>
         <p className="leading-relaxed">{product.desc}</p>
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-          <div className="flex">
+        <div className="flex">
             <span className="mr-3">Color</span>
             {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(Size) && <button onClick={()=>{select('red',Size)}} className={`border-2 ${Color==='red'?'border-black':'border-gray-300'} rounded-full bg-red-500 w-6 h-6 focus:outline-none`}></button>}
             {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(Size) && <button onClick={()=>{select('black',Size)}} className={`border-2 ${Color==='black'?'border-black':'border-gray-300'} ml-1 bg-black rounded-full w-6 h-6 focus:outline-none`}></button>}
             {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(Size) && <button onClick={()=>{select('blue',Size)}} className={`border-2 ${Color==='blue'?'border-black':'border-gray-300'} ml-1 bg-blue-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
             {Object.keys(variants).includes('pink') && Object.keys(variants['pink']).includes(Size) && <button onClick={()=>{select('pink',Size)}} className={`border-2 ${Color==='pink'?'border-black':'border-gray-300'} ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
             {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(Size) && <button onClick={()=>{select('green',Size)}} className={`border-2 ${Color==='green'?'border-black':'border-gray-300'} ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(Size) && <button onClick={()=>{select('white',Size)}} className={`border-2 ${Color==='white'?'border-black':'border-gray-300'} ml-1 bg-white rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variants).includes('silver') && Object.keys(variants['silver']).includes(Size) && <button onClick={()=>{select('silver',Size)}} className={`border-2 ${Color==='silver'?'border-black':'border-gray-300'} ml-1 bg-white rounded-full w-6 h-6 focus:outline-none`}></button>}
           </div>
           <div className="flex ml-6 items-center">
-            <span className="mr-3">Size</span>
+                <span className="mr-3">Size</span>
             <div className="relative">
               <select value={Size} onChange={(e)=>{select(Color,e.target.value)}} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
                  { Color && Object.keys(variants[Color]).includes('S') && <option value={'S'}>S</option>}
                  { Color && Object.keys(variants[Color]).includes('M') && <option value={'M'}>M</option>}
                  { Color && Object.keys(variants[Color]).includes('L') && <option value={'L'}>L</option>}
-                 { Color && Object.keys(variants[Color]).includes('XL') && <option value={'XL'}>XXL</option>}
+                 { Color && Object.keys(variants[Color]).includes('XL') && <option value={'XL'}>XL</option>}
                  { Color && Object.keys(variants[Color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
+                 { Color && Object.keys(variants[Color]).includes('A') && <option value={'Adjustable'}>Adjustable</option>}
               </select>
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">

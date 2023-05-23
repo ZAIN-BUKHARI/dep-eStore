@@ -3,7 +3,7 @@ import Product from '../../models/Product'
 
 const handler= async (req, res)=> {
     if(req.method=='POST'){
-        
+        console.log(req.body.Feature)
        try{ 
         let p = new Product({
             title:req.body.title,

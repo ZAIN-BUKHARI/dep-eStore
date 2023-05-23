@@ -119,6 +119,8 @@ body{
     align-items: center;
     min-height: 100vh;
     background-color: #23242a;
+    /* background-size: cover;
+    background-image: url("https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=878&q=80"); */
   }
 
   .box form{
@@ -227,6 +229,18 @@ body{
 .but{
   border: none;
   outline: none;
+  /* padding: 9px 25px; */
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9em;
+  border-radius: 4px;
+  font-weight: 600;
+  width: 100px;
+  
+}
+.butt{
+  border: none;
+  outline: none;
   padding: 9px 25px;
   background-color: #fff;
   cursor: pointer;
@@ -236,3 +250,16 @@ body{
   width: 100px;
   
 }
+
+/* .three{
+  display:grid;
+grid-template-columns:1fr 1fr 1fr ;
+gap:20px;
+padding-top:20px;
+}
+.two{
+  display:grid;
+grid-template-columns:1fr 1fr ;
+gap:20px;
+padding-top:20px;
+} */

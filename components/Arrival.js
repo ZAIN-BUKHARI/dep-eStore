@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const StyleDiv = styled.div`
 display:grid;
-grid-template-columns:1fr 1fr 1fr;
+grid-template-columns:1fr 1fr 1fr ;
 gap:20px;
 padding-top:20px;
 `;
@@ -18,17 +18,17 @@ const Title = styled.h2`
 `;
 const Box = styled.div`
 background-color: #fff;
-padding: 20px;
-height: 120px;
+// padding: 20px;
+// height: 120px;
 text-align: center;
 display: flex;
 align-items: center;
 justify-content: center;
 border-radius: 10px;
-img{
-  max-width: 100%;
-  max-height: 80px;
-}
+// img{
+//   max-width: 100px;
+//   max-height: 80px;
+// }
 `;
 
 const TitleTWO = styled.div`
@@ -73,13 +73,14 @@ const NewProducts = () => {
   useEffect(()=>{
      axios.get('/api/feature').then(res=>{
       setfeature(res.data.product)
+      console.log(res.data.product)
      })
   },[])
   return (
     <Center>
         <Title>New Arrivals</Title>
     <StyleDiv>
-        {products.length>0 && products.map(products=>(
+        {feature && feature.map(products=>(
             // <ProductBox {...products} />
             <Link key={products.id} href={`/product/${products.id}`}>
  <DIVONE>
@@ -89,7 +90,7 @@ const NewProducts = () => {
         </DIVTWO>
     </Box>
     <ProductInfoBox>
-      <TitleTWO href={'/'}>{products.title.slice(0,10)}</TitleTWO>
+      <TitleTWO href={'/'}>{products.title}</TitleTWO>
       <PriceRow>
         <Price>${products.price}</Price>
         <Button  block primary outline >Buy</Button>
